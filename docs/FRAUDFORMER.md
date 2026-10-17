@@ -90,6 +90,19 @@ The reproducible training command is:
 python src/train_fraudformer.py --backbone models/deberta/baseline_v1/final_checkpoint --experiment-name experiment_deberta_frozen --freeze-backbone --fp32 --epochs 5 --batch-size 16 --eval-batch-size 8 --learning-rate 3e-4
 ```
 
+## Result plots
+
+Generate the dedicated FraudFormer plots and the combined baseline comparisons with:
+
+```powershell
+python src/generate_fraudformer_plots.py
+```
+
+The script writes FraudFormer-only overall and per-class plots alongside combined
+six-system overall and per-class comparisons under
+`results/plots/model_performance/`. The fusion result is explicitly labelled as an
+ensemble so it is not confused with a standalone architecture.
+
 ## Required ablations for a dissertation claim
 
 Train otherwise identical variants without: (a) layer mixing, (b) discrepancy
