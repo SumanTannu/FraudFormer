@@ -103,6 +103,28 @@ six-system overall and per-class comparisons under
 `results/plots/model_performance/`. The fusion result is explicitly labelled as an
 ensemble so it is not confused with a standalone architecture.
 
+For consistent reporting, BERT, RoBERTa, DeBERTa, FraudFormer-RoBERTa, and
+FraudFormer-DeBERTa each receive an evaluation summary, per-class metrics,
+validation-vs-test comparison, confusion matrix, individual training curve, and
+ROC-AUC curve. The fusion ensemble receives the same test-evaluation, per-class,
+confusion-matrix, and ROC-AUC outputs. A standalone fusion training curve or full
+validation-vs-test chart is intentionally omitted because fusion is selected from
+component predictions rather than trained as a model, and its stored validation
+record contains only the selection macro-F1.
+
+It also writes a clean `Training Progress` graph from the saved trainer histories.
+Generate the strongest FraudFormer variant's one-vs-rest ROC-AUC curves directly
+from its frozen test predictions with:
+
+```powershell
+python src/generate_model_roc.py
+```
+
+Use `--device cpu` when the GPU is busy. The script creates identically styled
+per-model and combined ROC-AUC curves for all five trained models and the fusion
+ensemble. It verifies every checkpoint's test accuracy against its recorded metric
+before saving the plots and score table.
+
 ## Required ablations for a dissertation claim
 
 Train otherwise identical variants without: (a) layer mixing, (b) discrepancy
