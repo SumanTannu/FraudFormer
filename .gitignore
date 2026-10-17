@@ -3,6 +3,7 @@
 !.env.example
 __pycache__/
 *.py[cod]
+node_modules/
 .ipynb_checkpoints/
 # Primary datasets are committed through Git LFS for reproducibility.
 !data/
@@ -15,3 +16,5 @@ __pycache__/
 !data/splits/*.csv
 data/synthetic/
 models/*/
+# Re-creatable per-example prediction caches used by ensemble benchmarking.
+results/logits/

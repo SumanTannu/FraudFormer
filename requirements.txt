@@ -10,3 +10,5 @@ transformers
 accelerate
 sentencepiece
 scikit-learn
+fastapi
+uvicorn[standard]

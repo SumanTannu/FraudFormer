@@ -21,6 +21,32 @@ The completed phases do not include:
 - Model evaluation
 - Robustness testing
 - Adaptive retraining
+
+## Custom FraudFormer model
+
+The repository now includes **FraudFormer v1**, a custom transformer classifier for
+the three frozen classes. It augments a pretrained contextual encoder with learned
+layer mixing, multi-scale token/context discrepancy features, query-conditioned
+evidence pooling, three-view gating, imbalance-aware focal loss, and validation-only
+logit calibration. See [the architecture and reproducibility guide](docs/FRAUDFORMER.md).
+
+Train and evaluate it with `python src/train_fraudformer.py`; classify new text with
+`python src/predict_fraudformer.py --text "..."`. A claim that it is the best model
+is made only if its untouched test macro-F1 exceeds the recorded baselines.
+
+The current strongest run is the frozen-DeBERTa FraudFormer variant: **98.53% test
+accuracy and 95.17% test macro-F1**, narrowly above DeBERTa's 95.11% macro-F1. This
+is the best observed run, not yet a statistically significant superiority claim;
+see [the FraudFormer guide](docs/FRAUDFORMER.md) for the exact methodology and
+limitations.
+
+## React prediction interface
+
+The local web interface accepts pasted or uploaded job-posting text, offers all five
+trained model variants, and displays the predicted class, confidence, and full class
+probabilities. Build it with `cd web; npm install; npm run build`, then return to the
+repository root and run `python src/prediction_api.py`. Open
+`http://127.0.0.1:8000`. See [web/README.md](web/README.md) for development mode.
 - Web application development
 
 ## Final Dataset Construction

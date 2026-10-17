@@ -1,0 +1,63 @@
+{
+  "model": "fraudformer_fusion",
+  "component_order": [
+    "fraudformer",
+    "deberta",
+    "roberta"
+  ],
+  "weights_tuned_on_validation": {
+    "fraudformer": 0.5,
+    "deberta": 0.2,
+    "roberta": 0.3
+  },
+  "logit_bias_tuned_on_validation": [
+    0.0,
+    0.15000000596046448,
+    0.25
+  ],
+  "validation_macro_f1": 0.9093316345819605,
+  "test": {
+    "accuracy": 0.9838934181745874,
+    "macro_precision": 0.9435266498565342,
+    "macro_recall": 0.9305714553433578,
+    "macro_f1": 0.936845457090108,
+    "weighted_precision": 0.9839372989586233,
+    "weighted_recall": 0.9838934181745874,
+    "weighted_f1": 0.9838326737948099,
+    "class_0_precision": 0.9757412398921833,
+    "class_0_recall": 0.9929467084639498,
+    "class_0_f1": 0.9842687900563216,
+    "class_0_support": 2552.0,
+    "class_1_precision": 0.8548387096774194,
+    "class_1_recall": 0.8153846153846154,
+    "class_1_f1": 0.8346456692913385,
+    "class_1_support": 130.0,
+    "class_2_precision": 1.0,
+    "class_2_recall": 0.9833830421815083,
+    "class_2_f1": 0.9916219119226638,
+    "class_2_support": 2347.0
+  },
+  "confusion_matrix": [
+    [
+      2534,
+      18,
+      0
+    ],
+    [
+      24,
+      106,
+      0
+    ],
+    [
+      39,
+      0,
+      2308
+    ]
+  ],
+  "labels": {
+    "0": "Legitimate",
+    "1": "Human-written Fraud",
+    "2": "AI-generated Fraud"
+  },
+  "methodology": "weights and bias selected on validation; test scored once after selection"
+}
